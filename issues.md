@@ -1,0 +1,1 @@
+some issues need to be talked about, firstly, how to initialize all the motors in the motor matrix,(maping the physical position to the digital position in the system) how to reset the motor matrix when accidentally cut down the power.
