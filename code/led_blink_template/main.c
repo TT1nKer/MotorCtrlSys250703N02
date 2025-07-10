@@ -1,39 +1,44 @@
-// NOTE: This template assumes you are using STM32CubeIDE or a similar toolchain with STM32F4 HAL/StdPeriph drivers.
-// Make sure 'stm32f4xx.h' is available in your include path.
-// Define LED pin (e.g., PD12 on STM32F407VET6 Discovery board)
-#define LED_PORT GPIOD
-#define LED_PIN  GPIO_PIN_12
+#include "stm32f4xx.h"
+#include "sys.h"
+#include "delay.h"
 
-#define PERIPH_BASE           ((unsigned int)0x40000000)
-#define AHB1PERIPH_BASE       (PERIPH_BASE + 0x00020000)
-#define GPIOD_BASE            (AHB1PERIPH_BASE + 0x0C00)
-#define RCC_BASE              (AHB1PERIPH_BASE + 0x3800)
+#define LED_PIN 12
 
-#define RCC_AHB1ENR           (*(volatile unsigned int *)(RCC_BASE + 0x30))
-#define GPIOD_MODER           (*(volatile unsigned int *)(GPIOD_BASE + 0x00))
-#define GPIOD_OTYPER          (*(volatile unsigned int *)(GPIOD_BASE + 0x04))
-#define GPIOD_PUPDR           (*(volatile unsigned int *)(GPIOD_BASE + 0x0C))
-#define GPIOD_ODR             (*(volatile unsigned int *)(GPIOD_BASE + 0x14))
-
-#define GPIODEN               (1 << 3)
-#define LED_PIN               12
-
-void LED_Init(void) {
-    RCC_AHB1ENR |= GPIODEN; // Enable GPIOD clock
-    GPIOD_MODER &= ~(0x3 << (LED_PIN * 2));
-    GPIOD_MODER |=  (0x1 << (LED_PIN * 2)); // Output mode
-    GPIOD_OTYPER &= ~(0x1 << LED_PIN);      // Push-pull
-    GPIOD_PUPDR &= ~(0x3 << (LED_PIN * 2)); // No pull-up/pull-down
+void LED_GPIO_Init(void)
+{
+    GPIO_InitTypeDef GPIO_InitStructure;
+    
+    // Enable GPIOD clock
+    RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD, ENABLE);
+    
+    // Configure PD12 as output
+    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_12;
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
+    GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
+    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+    GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
+    GPIO_Init(GPIOD, &GPIO_InitStructure);
+    
+    // Initialize LED to OFF state
+    PDout(LED_PIN) = 0;
 }
 
-void delay(volatile unsigned int t) {
-    while (t--) for (volatile unsigned int i = 0; i < 8000; i++);
-}
-
-int main(void) {
-    LED_Init();
-    while (1) {
-        GPIOD_ODR ^= (1 << LED_PIN); // Toggle LED
-        delay(100);
+int main(void)
+{
+    // Initialize delay system
+    delay_init(168);  // 168MHz system clock
+    
+    // Initialize LED GPIO
+    LED_GPIO_Init();
+    
+    while(1)
+    {
+        // Turn LED ON
+        PDout(LED_PIN) = 1;
+        delay_ms(500);  // Wait 500ms
+        
+        // Turn LED OFF
+        PDout(LED_PIN) = 0;
+        delay_ms(500);  // Wait 500ms
     }
 } 

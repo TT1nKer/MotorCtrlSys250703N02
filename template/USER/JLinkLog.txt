@@ -1,0 +1,146 @@
+T1770C 000:211.736   SEGGER J-Link V8.32 Log File
+T1770C 000:211.957   DLL Compiled: May  7 2025 19:09:29
+T1770C 000:211.968   Logging started @ 2025-07-09 16:39
+T1770C 000:211.978   Process: C:\Keil_v5\UV4\UV4.EXE
+T1770C 000:211.999 - 211.989ms 
+T1770C 000:212.016 JLINK_SetWarnOutHandler(...)
+T1770C 000:212.026 - 0.011ms 
+T1770C 000:212.037 JLINK_OpenEx(...)
+T1770C 000:217.625   Firmware: J-Link V9 compiled Dec 19 2014 16:50:53
+T1770C 000:219.228   Firmware: J-Link V9 compiled Dec 19 2014 16:50:53
+T1770C 000:219.409   Decompressing FW timestamp took 123 us
+T1770C 000:223.425   Decompressing FW took 3991 us
+T1770C 000:224.431   Looking for J-Link GUI Server exe at: C:\Keil_v5\ARM\Segger\JLinkGUIServer.exe
+T1770C 000:224.853   Looking for J-Link GUI Server exe at: C:\Program Files\SEGGER\JLink\JLinkGUIServer.exe
+T1770C 000:224.988   Forking J-Link GUI Server: C:\Program Files\SEGGER\JLink\JLinkGUIServer.exe
+T1770C 000:407.728   J-Link GUI Server info: "J-Link GUI server V8.32 "
+T1770C 002:380.914   Hardware: V9.20
+T1770C 002:381.015   S/N: 29999997
+T1770C 002:381.030   OEM: SEGGER
+T1770C 002:381.045   Feature(s): GDB, RDI, FlashBP, FlashDL, JFlash
+T1770C 002:382.736   Bootloader: (FW returned invalid version)
+T1770C 002:384.593   TELNET listener socket opened on port 19021
+T1770C 002:385.500   WEBSRV WEBSRV_Init(): Starting webserver thread(s)
+T1770C 002:386.111   WEBSRV Webserver running on local port 19080
+T1770C 002:386.451   Looking for J-Link GUI Server exe at: C:\Keil_v5\ARM\Segger\JLinkGUIServer.exe
+T1770C 002:386.748   Looking for J-Link GUI Server exe at: C:\Program Files\SEGGER\JLink\JLinkGUIServer.exe
+T1770C 002:386.917   Forking J-Link GUI Server: C:\Program Files\SEGGER\JLink\JLinkGUIServer.exe
+T1770C 002:548.242   J-Link GUI Server info: "J-Link GUI server V8.32 "
+T1770C 002:548.977 - 2336.930ms returns "O.K."
+T1770C 002:549.020 JLINK_GetEmuCaps()
+T1770C 002:549.035 - 0.012ms returns 0xB9FF7BBF
+T1770C 002:549.049 JLINK_TIF_GetAvailable(...)
+T1770C 002:549.594 - 0.544ms 
+T1770C 002:549.630 JLINK_SetErrorOutHandler(...)
+T1770C 002:549.641 - 0.010ms 
+T1770C 002:549.680 JLINK_ExecCommand("ProjectFile = "E:\MotorCtrlSys250703N02\template\USER\JLinkSettings.ini"", ...). 
+T1770C 002:564.189   Ref file found at: C:\Keil_v5\ARM\Segger\JLinkDevices.ref
+T1770C 002:564.436   REF file references invalid XML file: C:\Program Files\SEGGER\JLink\JLinkDevices.xml
+T1770C 002:566.356 - 16.677ms returns 0x00
+T1770C 002:566.394 JLINK_ExecCommand("Device = STM32F407VE", ...). 
+T1770C 002:566.845   Device "STM32F407VE" selected.
+T1770C 002:567.555 - 1.147ms returns 0x00
+T1770C 002:567.580 JLINK_ExecCommand("DisableConnectionTimeout", ...). 
+T1770C 002:567.612   ERROR: Unknown command
+T1770C 002:567.627 - 0.027ms returns 0x01
+T1770C 002:567.639 JLINK_GetHardwareVersion()
+T1770C 002:567.652 - 0.010ms returns 92000
+T1770C 002:567.662 JLINK_GetDLLVersion()
+T1770C 002:567.672 - 0.009ms returns 83200
+T1770C 002:567.683 JLINK_GetOEMString(...)
+T1770C 002:567.694 JLINK_GetFirmwareString(...)
+T1770C 002:567.704 - 0.009ms 
+T1770C 002:567.719 JLINK_GetDLLVersion()
+T1770C 002:567.728 - 0.009ms returns 83200
+T1770C 002:567.740 JLINK_GetCompileDateTime()
+T1770C 002:567.749 - 0.009ms 
+T1770C 002:567.761 JLINK_GetFirmwareString(...)
+T1770C 002:567.771 - 0.010ms 
+T1770C 002:567.783 JLINK_GetHardwareVersion()
+T1770C 002:567.792 - 0.009ms returns 92000
+T1770C 002:567.804 JLINK_GetSN()
+T1770C 002:567.815 - 0.010ms returns 29999997
+T1770C 002:567.828 JLINK_GetOEMString(...)
+T1770C 002:567.842 JLINK_TIF_Select(JLINKARM_TIF_SWD)
+T1770C 002:570.028 - 2.186ms returns 0x00
+T1770C 002:570.059 JLINK_HasError()
+T1770C 002:570.084 JLINK_SetSpeed(5000)
+T1770C 002:570.499 - 0.416ms 
+T1770C 002:570.832 JLINK_HasError()
+T1770C 002:570.855 JLINK_SetResetType(JLINKARM_RESET_TYPE_NORMAL)
+T1770C 002:570.867 - 0.012ms returns JLINKARM_RESET_TYPE_NORMAL
+T1770C 002:570.878 JLINK_Reset()
+T1770C 002:571.486   InitTarget() start
+T1770C 002:571.524    J-Link Script File: Executing InitTarget()
+T1770C 002:572.122   SWD selected. Executing JTAG -> SWD switching sequence.
+T1770C 002:576.269   Error: Failed to initialized DAP.
+T1770C 002:576.318   Can not attach to CPU. Trying connect under reset.
+T1770C 002:628.467   SWD selected. Executing JTAG -> SWD switching sequence.
+T1770C 002:634.226   Error: Failed to initialized DAP.
+T1770C 002:634.264   Connecting to CPU via connect under reset failed.
+T1770C 002:685.715   InitTarget() end - Took 114ms
+T1770C 002:685.896   Connect failed. Resetting via Reset pin and trying again.
+T1770C 002:749.332   InitTarget() start
+T1770C 002:749.486    J-Link Script File: Executing InitTarget()
+T1770C 002:750.452   SWD selected. Executing JTAG -> SWD switching sequence.
+T1770C 002:756.136   Error: Failed to initialized DAP.
+T1770C 002:756.169   Can not attach to CPU. Trying connect under reset.
+T1770C 002:807.592   SWD selected. Executing JTAG -> SWD switching sequence.
+T1770C 002:812.824   Error: Failed to initialized DAP.
+T1770C 002:812.882   Connecting to CPU via connect under reset failed.
+T1770C 002:864.243   InitTarget() end - Took 114ms
+T1770C 002:864.296 - 293.417ms 
+T1770C 002:864.319 JLINK_GetId()
+T1770C 002:865.148   InitTarget() start
+T1770C 002:865.280    J-Link Script File: Executing InitTarget()
+T1770C 002:866.071   SWD selected. Executing JTAG -> SWD switching sequence.
+T1770C 002:871.473   Error: Failed to initialized DAP.
+T1770C 002:871.610   Can not attach to CPU. Trying connect under reset.
+T1770C 002:923.389   SWD selected. Executing JTAG -> SWD switching sequence.
+T1770C 002:929.259   Error: Failed to initialized DAP.
+T1770C 002:929.300   Connecting to CPU via connect under reset failed.
+T1770C 002:980.071   InitTarget() end - Took 114ms
+T1770C 002:980.226   Connect failed. Resetting via Reset pin and trying again.
+T1770C 003:043.524   InitTarget() start
+T1770C 003:043.577    J-Link Script File: Executing InitTarget()
+T1770C 003:044.512   SWD selected. Executing JTAG -> SWD switching sequence.
+T1770C 003:050.447   Error: Failed to initialized DAP.
+T1770C 003:050.479   Can not attach to CPU. Trying connect under reset.
+T1770C 003:101.597   SWD selected. Executing JTAG -> SWD switching sequence.
+T1770C 003:107.181   Error: Failed to initialized DAP.
+T1770C 003:107.328   Connecting to CPU via connect under reset failed.
+T1770C 003:158.720   InitTarget() end - Took 115ms
+T1770C 003:158.868 - 294.545ms returns 0x00000000
+T1770C 003:158.980 JLINK_GetId()
+T1770C 003:159.646   InitTarget() start
+T1770C 003:159.674    J-Link Script File: Executing InitTarget()
+T1770C 003:160.143   SWD selected. Executing JTAG -> SWD switching sequence.
+T1770C 003:165.427   Error: Failed to initialized DAP.
+T1770C 003:165.458   Can not attach to CPU. Trying connect under reset.
+T1770C 003:217.523   SWD selected. Executing JTAG -> SWD switching sequence.
+T1770C 003:223.208   Error: Failed to initialized DAP.
+T1770C 003:223.262   Connecting to CPU via connect under reset failed.
+T1770C 003:274.272   InitTarget() end - Took 114ms
+T1770C 003:274.323   Connect failed. Resetting via Reset pin and trying again.
+T1770C 003:337.827   InitTarget() start
+T1770C 003:338.016    J-Link Script File: Executing InitTarget()
+T1770C 003:338.909   SWD selected. Executing JTAG -> SWD switching sequence.
+T1770C 003:344.227   Error: Failed to initialized DAP.
+T1770C 003:344.261   Can not attach to CPU. Trying connect under reset.
+T1770C 003:396.359   SWD selected. Executing JTAG -> SWD switching sequence.
+T1770C 003:402.067   Error: Failed to initialized DAP.
+T1770C 003:402.100   Connecting to CPU via connect under reset failed.
+T1770C 003:453.118   InitTarget() end - Took 115ms
+T1770C 003:453.262 - 294.280ms returns 0x00000000
+T1770C 003:463.328 JLINK_GetFirmwareString(...)
+T1770C 003:463.394 - 0.065ms 
+T1770C 009:570.669 JLINK_GetFirmwareString(...)
+T1770C 009:570.711 - 0.043ms 
+T1770C 009:570.732 JLINK_GetEmuCaps()
+T1770C 009:570.747 - 0.014ms returns 0xB9FF7BBF
+T1770C 009:570.794 JLINK_TIF_GetAvailable(...)
+T1770C 009:571.391 - 0.596ms 
+T1770C 013:319.729 JLINK_Close()
+T1770C 013:333.326 - 13.595ms
+T1770C 013:333.404   
+T1770C 013:333.415   Closed
