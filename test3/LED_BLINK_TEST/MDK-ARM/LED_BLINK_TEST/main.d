@@ -28,4 +28,7 @@ led_blink_test\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_e
 led_blink_test\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h
 led_blink_test\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h
 led_blink_test\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h
+led_blink_test\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
+led_blink_test\main.o: ../Core/Inc/usart.h
 led_blink_test\main.o: ../Core/Inc/gpio.h
+led_blink_test\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h

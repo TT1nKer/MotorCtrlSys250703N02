@@ -18,9 +18,8 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include "gpio.h"
 #include "usart.h"
-#include "spi.h"
+#include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -88,19 +87,12 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  MX_USART1_UART_Init();
   MX_USART2_UART_Init();
-  MX_SPI1_Init();
-  MX_SPI2_Init();
   /* USER CODE BEGIN 2 */
   
-  /* Example: Send a message via UART1 */
-  char uart_message[] = "STM32F4 UART Test\r\n";
-  HAL_UART_Transmit(&huart1, (uint8_t*)uart_message, strlen(uart_message), 1000);
-  
-  /* Example: Send AT command to Bluetooth module via UART2 */
-  char bt_command[] = "AT\r\n";
-  HAL_UART_Transmit(&huart2, (uint8_t*)bt_command, strlen(bt_command), 1000);
+  /* Initialize HC-05 Bluetooth module */
+  char init_message[] = "STM32F4 Bluetooth Ready!\r\n";
+  HAL_UART_Transmit(&huart2, (uint8_t*)init_message, strlen(init_message), 1000);
 
   /* USER CODE END 2 */
 
@@ -113,19 +105,25 @@ int main(void)
     /* Toggle LED at PD12 (on/off) */
     HAL_GPIO_TogglePin(GPIOD, LED_Pin);
     
-    /* Example: SPI communication */
-    uint8_t spi_data[] = {0x01, 0x02, 0x03, 0x04};
-    uint8_t spi_receive[4];
+    /* Send LED status via Bluetooth */
+    char led_message[] = "LED Toggled!\r\n";
+    HAL_UART_Transmit(&huart2, (uint8_t*)led_message, strlen(led_message), 100);
     
-    /* Send data via SPI1 */
-    HAL_GPIO_WritePin(GPIOA, GPIO_PIN_4, GPIO_PIN_RESET);  // CS low
-    HAL_SPI_Transmit(&hspi1, spi_data, 4, 1000);
-    HAL_GPIO_WritePin(GPIOA, GPIO_PIN_4, GPIO_PIN_SET);    // CS high
+    /* Check for Bluetooth commands */
+    uint8_t command[50];
+    uint16_t received = HAL_UART_Receive(&huart2, command, 50, 10);
     
-    /* Receive data via SPI2 */
-    HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12, GPIO_PIN_RESET); // CS low
-    HAL_SPI_Receive(&hspi2, spi_receive, 4, 1000);
-    HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12, GPIO_PIN_SET);   // CS high
+    if(received > 0) {
+      /* Process received command */
+      if(strstr((char*)command, "LED_ON")) {
+        HAL_GPIO_WritePin(GPIOD, LED_Pin, GPIO_PIN_SET);
+        HAL_UART_Transmit(&huart2, (uint8_t*)"LED Turned ON\r\n", 15, 100);
+      }
+      else if(strstr((char*)command, "LED_OFF")) {
+        HAL_GPIO_WritePin(GPIOD, LED_Pin, GPIO_PIN_RESET);
+        HAL_UART_Transmit(&huart2, (uint8_t*)"LED Turned OFF\r\n", 16, 100);
+      }
+    }
     
     /* Wait for 100ms */
     HAL_Delay(100);
